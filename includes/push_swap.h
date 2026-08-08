@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "../libft/libft.h"
 
 typedef struct s_node
 {
@@ -31,5 +32,22 @@ typedef struct s_stack
 	t_node	*bottom;
 	int		size;
 }	t_stack;
+
+//utils.c
+
+int	is_number(char *str);
+void	print_error(t_stack *stack);
+
+
+//parsing.c
+int	has_duplicate(t_node *top, int number);
+void	parse_args(int argc, char **argv, t_stack *stack);
+
+//stack_utils.c
+void	init_stack(t_stack *stack);
+t_node *create_node(int value);
+void	add_node_back(t_stack *stack, t_node *new_node);
+void	free_stack(t_stack *stack);
+
 
 #endif
