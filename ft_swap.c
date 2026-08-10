@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void	ft_swap(t_stack **stack)
 {
 	t_node	*first;

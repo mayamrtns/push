@@ -1,17 +1,20 @@
+#include "push_swap.h"
+
 void    ft_rerotate(t_stack **stack)
 {
-	t_stack *penultimo;
-	t_stack	*last;
+	t_node *penultimo;
+	t_node	*last;
 
-	if (!stack || !*stack || !(*stack)->next)
+	if (!stack || !(*stack)->top || !(*stack)->top->next)
 		return;
-	penultimo = *stack;
-	while (penultimo->next->next)
-		penultimo = penultimo->next;
-	last = penultimo->next;
-	last->next = *stack;
+	penultimo = (*stack)->bottom->prev;
+	last = (*stack)->bottom;
+	last->next = (*stack)->top;
+	(*stack)->top->prev = last;
 	penultimo->next = NULL;
-	*stack = last;
+	last->prev = NULL;
+	(*stack)->top = last;
+	(*stack)->bottom = penultimo;
 }
 
 void	rra(t_stack **stack_a)

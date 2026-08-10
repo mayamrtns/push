@@ -3,9 +3,9 @@
 
 void	init_stack(t_stack *stack)
 {
-	stack ->top = NULL;
-	stack -> size = 0;
-
+	stack->top = NULL;
+	stack->size = 0;
+	stack->bottom = NULL;
 }
 
 t_node *create_node(int value)
@@ -38,6 +38,7 @@ void	add_node_back(t_stack *stack, t_node *new_node)
 	last->next = new_node;
 	new_node->prev = last;
 	}
+	stack->bottom = new_node;
 	stack->size++;
 }
 

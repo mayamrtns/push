@@ -1,20 +1,40 @@
-void    ft_push(t_list **src, t_list **dst)
-{
-	t_list	*tmp;
+#include "push_swap.h"
 
-	if (!src || !*src)
+void	ft_push(t_stack **src, t_stack **dst)
+{
+	t_node	*tmp;
+
+	if (!src || !(*src)->top)
 		return;
-        //nada deve ser feito
+		//nada deve ser feito
 		//protege o programa de segfault
-    //se a pilha de origem só tiver um nó, ela deve ficar nula após a remoção
-	tmp = *src;
+	//se a pilha de origem estiver vazia, não há o que mover
+	tmp = (*src)->top;
 	//guarda o topo da stack de origem
-	*src = tmp->next;
+	(*src)->top = tmp->next;
 	//atualiza o topo da origem para o nó seguinte
-	tmp->next = *dst;
-	//conecta o next de temp ao antigo topo da stack de destino
-	*dst = tmp;
+	if ((*src)->top)
+		(*src)->top->prev = NULL;
+		//se sobrou alguém, ele é o novo topo e não tem prev
+	else
+		(*src)->bottom = NULL;
+		//se a origem ficou vazia, bottom também precisa ficar nulo
+	tmp->next = (*dst)->top;
+	//conecta o next do tmp ao antigo topo da stack de destino
+	tmp->prev = NULL;
+	//tmp vai virar o novo topo, então não tem ninguém antes dele
+	if ((*dst)->top)
+		(*dst)->top->prev = tmp;
+		//se já tinha alguém no destino, ele passa a apontar de volta pro tmp
+	else
+		(*dst)->bottom = tmp;
+		//se o destino estava vazio, tmp é o único nó: topo e fundo ao mesmo tempo
+	(*dst)->top = tmp;
 	//atualiza o topo da stack de destino
+	(*src)->size--;
+	//origem perdeu um nó
+	(*dst)->size++;
+	//destino ganhou um nó
 }
 
 void	pa(t_stack **stack_a, t_stack **stack_b)

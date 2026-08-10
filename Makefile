@@ -28,7 +28,8 @@ SRC         = srcs/main.c \
               libft/ft_split.c \
               libft/ft_strdup.c \
               libft/ft_strlen.c \
-              libft/ft_substr.c
+              libft/ft_substr.c \
+              ft_rerotate.c ft_rotate.c ft_swap.c push.c 
 
 OBJ         = $(SRC:.c=.o)
 
@@ -52,4 +53,22 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Lista de fontes de teste (igual ao SRC, mas sem srcs/main.c, com test_main.c)
+TEST_SRC    = srcs/parsing.c \
+              srcs/stack_utils.c \
+              srcs/utils.c \
+              libft/ft_atol.c \
+              libft/ft_isdigit.c \
+              libft/ft_putstr_fd.c \
+              libft/ft_putendl_fd.c \
+              libft/ft_split.c \
+              libft/ft_strdup.c \
+              libft/ft_strlen.c \
+              libft/ft_substr.c \
+              ft_rerotate.c ft_rotate.c ft_swap.c push.c \
+              test_main.c
+
+test: $(TEST_SRC)
+	$(CC) $(CFLAGS) $(TEST_SRC) -o test
+    
+.PHONY: all clean fclean re test
