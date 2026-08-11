@@ -21,7 +21,8 @@ SRC         = srcs/main.c \
               srcs/parsing.c \
               srcs/stack_utils.c \
               srcs/utils.c \
-              srcs/disorder.c \
+              srcs/analysis.c \
+               srcs/sort_base.c \
               libft/ft_atol.c \
               libft/ft_isdigit.c \
               libft/ft_putstr_fd.c \
@@ -58,7 +59,8 @@ re: fclean all
 TEST_SRC    = srcs/parsing.c \
               srcs/stack_utils.c \
               srcs/utils.c \
-              srcs/disorder.c \
+              srcs/analysis.c \
+              srcs/sort_base.c \
               libft/ft_atol.c \
               libft/ft_isdigit.c \
               libft/ft_putstr_fd.c \

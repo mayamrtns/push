@@ -15,6 +15,8 @@ void	ft_swap(t_stack **stack)
 	third = second->next;
 	if (third != NULL)
 		third->prev = first;
+	else
+		(*stack)->bottom = first;
 	first->next = third;
 	first->prev = second;
 	second->prev = NULL;
