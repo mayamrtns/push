@@ -33,17 +33,19 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-//utils.c
+//srcs/utils.c
 int	is_number(char *str);
 void	print_error(t_stack *stack);
-//parsing.c
+//srcs/parsing.c
 int	has_duplicate(t_node *top, int number);
 void	parse_args(int argc, char **argv, t_stack *stack);
-//stack_utils.c
+//srcs/stack_utils.c
 void	init_stack(t_stack *stack);
 t_node *create_node(int value);
 void	add_node_back(t_stack *stack, t_node *new_node);
 void	free_stack(t_stack *stack);
+//srcs/disorder.c
+double	compute_disorder ( t_stack *stack_a);
 //ft_rerotate.c
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
