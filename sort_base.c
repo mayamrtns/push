@@ -6,7 +6,7 @@
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:39 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/17 16:55:40 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/20 18:21:23 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,37 @@ void	sort_two(t_stack **stack_a)
 //3 -> (312) = ra
 //4 -> (132) = sa e ra
 //5 -> (231) = rra
-void	sort_three(t_stack **stack_a)
-{
-	t_node	*first;
-	t_node	*second;
-	t_node	*third;
 
-	if (!stack_a || !(*stack_a)->top || !(*stack_a)->top->next || !(*stack_a)->top->next->next)
+
+void	sort_three(t_stack **a)
+{
+	int	first;
+	int	second;
+	int	third;
+	first = (*a)->top->value;
+	second = (*a)->top->next->value;
+	third = (*a)->top->next->next->value;
+	if (first < second && second < third)
 		return ;
-	first = (*stack_a)->top;
-	second = first->next;
-	third = second->next;
-	if (first->value > second->value && second->value < third->value && first->value < third->value)
-		sa(stack_a);
-	else if (first->value > second->value && second->value > third->value && first->value > third->value)
+	else if (first < third && third < second)
 	{
-		sa(stack_a);
-		rra(stack_a);
+		sa(a);
+		rra(a);
 	}
-	else if (first->value > second->value && second->value < third->value && first->value > third->value)
-		ra(stack_a);
-	else if (first->value < second->value && second->value > third->value && first->value < third->value)
+	else if (second < first && first < third)
+		sa(a);
+	else if (second < third && third < first)
+		rra(a);
+	else if (third < first && first < second)
+		ra(a);
+	else if (third < second && second < first)
 	{
-		sa(stack_a);
-		ra(stack_a);
+		sa(a);
+		rra(a);
 	}
-	else if (first->value < second->value && second->value > third->value && first->value > third->value)
-		rra(stack_a);
 }
 
-// void	sort_three(t_stack *a)
+// static int	find_min_position(t_stack *a)
 // {
-// 	int	first;
-// 	int	second;
-// 	int	third;
-// first = a->top->value;
-// 	second = a->top->next->value;
-// 	third = a->top->next->next->value;
-// if (first < second && second < third)
-// 		return ;
-// 	else if (first < third && third < second)
-// 		{ sa; rra }
-// 	else if (second < first && first < third)
-// 		sa;
-// 	else if (second < third && third < first)
-// 		rra;
-// 	else if (third < first && first < second)
-// 		ra;
-// 	else if (third < second && second < first)
-// 		{ sa; rra; }
-//}
+
+// }
