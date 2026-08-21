@@ -6,7 +6,7 @@
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 17:22:14 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/21 18:27:08 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/21 19:39:59 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,3 @@ void	radix_sort(t_stack **a, t_stack **b)
 		bit++;
 	}
 }//no fim, a  stack A esta ordenada
-
-void	adaptive_sort(t_stack **a, t_stack **b)
-{
-	chunk_sort(a, b, get_chunk_size((*a)->size));
-}

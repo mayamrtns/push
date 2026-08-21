@@ -30,6 +30,7 @@ SRC = srcs/main.c \
 	libft/ft_strdup.c \
 	libft/ft_strlen.c \
 	libft/ft_substr.c \
+	libft/ft_strncmp.c\
 	operations/ft_rerotate.c\
 	operations/ft_rotate.c\
 	operations/ft_swap.c\
@@ -38,7 +39,8 @@ SRC = srcs/main.c \
 	sort/chunk_utils.c\
 	sort/selection_sort.c\
 	sort/sort_base.c\
-	sort/radix_sort.c
+	sort/radix_sort.c\
+	sort/adaptive_sort.c
 
 
 OBJ         = $(SRC:.c=.o)
@@ -64,7 +66,7 @@ fclean: clean
 re: fclean all
 
 # Lista de fontes de teste (igual ao SRC, mas sem srcs/main.c, com test_main.c)
-TEST_SRC    = srcs/main.c \
+TEST_SRC    = ssrcs/main.c \
 	srcs/parsing.c \
 	srcs/stack_utils.c \
 	srcs/utils.c \
@@ -77,6 +79,7 @@ TEST_SRC    = srcs/main.c \
 	libft/ft_strdup.c \
 	libft/ft_strlen.c \
 	libft/ft_substr.c \
+	libft/ft_strncmp.c\
 	operations/ft_rerotate.c\
 	operations/ft_rotate.c\
 	operations/ft_swap.c\
@@ -85,7 +88,8 @@ TEST_SRC    = srcs/main.c \
 	sort/chunk_utils.c\
 	sort/selection_sort.c\
 	sort/sort_base.c\
-	sort/radix_sort.c
+	sort/radix_sort.c\
+	sort/adaptive_sort.c
 
 test: $(TEST_SRC)
 	$(CC) $(CFLAGS) $(TEST_SRC) -o test
