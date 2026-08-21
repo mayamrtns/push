@@ -6,13 +6,13 @@
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 17:19:20 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/20 18:20:37 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/20 20:30:54 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high)
+void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high)
 {
 	int	total;
 
