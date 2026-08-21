@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   analysis.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/12 18:47:53 by malima-m          #+#    #+#             */
+/*   Updated: 2026/08/21 16:01:59 by malima-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-//mede o quão "bagunçada" a pilha A está, 
+//mede o quão "bagunçada" a pilha A está,
 // devolvendo um número entre 0.0 (perfeitamente ordenada)
 //  e 1.0 (na pior ordem possível).
 
@@ -60,5 +72,18 @@ void	index_stack(t_stack *stack_a)
 		index_i = index_i->next;
 	}
 }
+int	is_sorted(t_stack *stack)
+{
+	t_node	*current;
 
-
+	if (!stack || !stack->top)
+		return (1);
+	current = stack->top;
+	while (current->next)
+	{
+		if (current->index > current->next->index)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}

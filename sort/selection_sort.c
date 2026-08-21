@@ -1,42 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/12 19:02:48 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/12 19:02:49 by malima-m         ###   ########.fr       */
+/*   Created: 2026/08/13 16:52:13 by malima-m          #+#    #+#             */
+/*   Updated: 2026/08/20 19:58:20 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Concentra utilitários genéricos: is_number e exibição de erros no stderr.
 #include "push_swap.h"
 
-
-
-int	is_number(char *str)
+void	ft_selection_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int	i;
+	int	size;
 
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (str[i] == '\0')
-		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	print_error(t_stack *stack)
-{
-	if(stack)
-		free_stack(stack);
-	ft_putendl_fd("Error", 2);
-	exit(1);
+	if (!stack_a || !*stack_a || !(*stack_a)->top)
+		return ;
+	size = (*stack_a)->size;
+	push_chunk(stack_a, stack_b, 0, size - 1);
+	push_back(stack_a, stack_b);
 }

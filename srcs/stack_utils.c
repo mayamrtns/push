@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/12 19:02:43 by malima-m          #+#    #+#             */
+/*   Updated: 2026/08/20 16:18:19 by malima-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //Contém funções de alocação como init_stack, create_node, add_node_back e a desalocação free_stack.
 #include "push_swap.h"
 
@@ -58,4 +70,5 @@ void	free_stack(t_stack *stack)
 	}
 	stack->top = NULL;
 	stack->size = 0;
+	stack->bottom = 0;
 }
