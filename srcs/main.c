@@ -55,7 +55,11 @@ static void	parse_mode(int argc, char **argv, t_mode *mode, t_stack	*stack_a, t_
 
 static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_mode mode)
 {
-	if (mode == SIMPLE)
+	if ((*stack_a)->size == 2)
+		sort_two(stack_a);
+	else if ((*stack_a)->size == 3)
+		sort_three(stack_a);
+	else if (mode == SIMPLE)
 		ft_selection_sort(stack_a, stack_b);
 	else if (mode == MEDIUM)
 		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size));
