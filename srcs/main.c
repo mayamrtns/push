@@ -16,15 +16,15 @@
 
 int	is_mode_flag(char *arg, t_mode *mode)
 {
-	if (strncmp(arg, "--simple", 9) == 0)
+	if (ft_strncmp(arg, "--simple", 9) == 0)
 		*mode = SIMPLE;
-	else if (strncmp(arg, "--medium", 9) == 0)
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
 		*mode = MEDIUM;
-	else if (strncmp(arg, "--complex", 10) == 0)
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
 		*mode = COMPLEX;
-	else if (strncmp(arg, "--adaptive", 11) == 0)
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
 		*mode = ADAPTIVE;
-	else if (strncmp(arg, "--", 2) == 0)
+	else if (ft_strncmp(arg, "--", 2) == 0)
 		return (-1);
 	else
 		return (0);
