@@ -40,18 +40,21 @@ void	ft_swap(t_stack **stack)
 void	sa(t_stack **stack_a)
 {
 	ft_swap (stack_a);
-	write(1, "sa\n", 3);
+	//write(1, "sa\n", 3);
+	print_operations("sa");
 }
 
 void	sb(t_stack **stack_b)
 {
 	ft_swap(stack_b);
-	write(1, "sb\n", 3);
+	//write(1, "sb\n", 3);
+	print_operations("sb");
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	write(1, "ss\n", 3);
+	//write(1, "ss\n", 3);
+	print_operations("ss");
 }

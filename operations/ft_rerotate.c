@@ -34,14 +34,16 @@ void	rra(t_stack **stack_a)
 
 {
 	ft_rerotate(stack_a);
-	write(1, "rra\n", 4);
+	//write(1, "rra\n", 4);
+	print_operations("rra");
 }
 
 void	rrb(t_stack **stack_b)
 
 {
 	ft_rerotate(stack_b);
-	write(1, "rrb\n", 4);
+	//write(1, "rrb\n", 4);
+	print_operations("rrb");
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
@@ -49,5 +51,6 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_rerotate(stack_a);
 	ft_rerotate(stack_b);
-	write(1, "rrr\n", 4);
+	//write(1, "rrr\n", 4);
+	print_operations("rrr");
 }
