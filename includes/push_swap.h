@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 #include <string.h>
-#include <stdio.h>
+#include <stdio.h> //remover posteriormente
 # include "../libft/libft.h"
 
 typedef struct s_node
@@ -43,9 +43,26 @@ typedef enum e_mode
 	ADAPTIVE
 }	t_mode;
 
+typedef struct s_op_count
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}    t_op_count;
+
 //srcs/utils.c
 int	is_number(char *str);
 void	print_error(t_stack *stack_a, t_stack *stack_b);
+void	print_operations(char *name_op);
+t_op_count get_op_count(void);
 //srcs/parsing.c
 int	has_duplicate(t_node *top, int number);
 void	parse_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b);
