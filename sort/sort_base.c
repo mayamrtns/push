@@ -40,6 +40,7 @@ void	sort_three(t_stack **a)
 	int	first;
 	int	second;
 	int	third;
+	
 	first = (*a)->top->value;
 	second = (*a)->top->next->value;
 	third = (*a)->top->next->next->value;

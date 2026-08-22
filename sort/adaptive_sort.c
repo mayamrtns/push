@@ -19,7 +19,6 @@ void	adaptive_sort(t_stack **stack_a, t_stack **stack_b)
 	if (!stack_a || !*stack_a  || !(*stack_a)->top || !(*stack_a)->top->next)
 		return ;
 	stack_disorder = compute_disorder(*stack_a);
-	fprintf(stderr, "DEBUG disorder: %f\n", stack_disorder);
 	if (stack_disorder < 0.2)
 		ft_selection_sort(stack_a, stack_b);
 	else if (stack_disorder < 0.5)
