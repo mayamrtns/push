@@ -40,7 +40,7 @@ void	sort_three(t_stack **a)
 	int	first;
 	int	second;
 	int	third;
-	
+
 	first = (*a)->top->value;
 	second = (*a)->top->next->value;
 	third = (*a)->top->next->next->value;
@@ -49,14 +49,14 @@ void	sort_three(t_stack **a)
 	else if (first < third && third < second)
 	{
 		sa(a);
-		rra(a);
+		ra(a);
 	}
 	else if (second < first && first < third)
 		sa(a);
 	else if (second < third && third < first)
-		rra(a);
-	else if (third < first && first < second)
 		ra(a);
+	else if (third < first && first < second)
+		rra(a);
 	else if (third < second && second < first)
 	{
 		sa(a);
