@@ -45,10 +45,10 @@ typedef enum e_mode
 
 //srcs/utils.c
 int	is_number(char *str);
-void	print_error(t_stack *stack);
+void	print_error(t_stack *stack_a, t_stack *stack_b);
 //srcs/parsing.c
 int	has_duplicate(t_node *top, int number);
-void	parse_args(int argc, char **argv, t_stack *stack);
+void	parse_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b);
 //srcs/stack_utils.c
 void	init_stack(t_stack *stack);
 t_node *create_node(int value);

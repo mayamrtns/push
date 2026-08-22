@@ -28,25 +28,25 @@ int	has_duplicate(t_node *top, int number)
 	return (0);
 }
 
-static void	process_number(char *arg, t_stack *stack)
+static void	process_number(char *arg, t_stack *stack_a, t_stack *stack_b)
 {
 	long	value;
 	t_node	*new_node;
 
 	if (!is_number(arg))
-		print_error(stack);
+		print_error(stack_a, stack_b);
 	value = ft_atol(arg);
 	if (value > INT_MAX || value < INT_MIN)
-		print_error(stack);
-	if (has_duplicate(stack->top, (int)value))
-		print_error(stack);
+		print_error(stack_a, stack_b);
+	if (has_duplicate(stack_a->top, (int)value))
+		print_error(stack_a, stack_b);
 	new_node = create_node((int)value);
 	if (!new_node)
-		print_error(stack);
-	add_node_back(stack, new_node);
+		print_error(stack_a, stack_b);
+	add_node_back(stack_a, new_node);
 }
 
-void	parse_args(int argc, char **argv, t_stack *stack)
+void	parse_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
 {
 	int		i;
 	t_mode	mode;
@@ -55,7 +55,7 @@ void	parse_args(int argc, char **argv, t_stack *stack)
 	while (i < argc)
 	{
 		if (is_mode_flag(argv[i], &mode) == 0)
-			process_number(argv[i], stack);
+			process_number(argv[i], stack_a, stack_b);
 		i++;
 	}
 }

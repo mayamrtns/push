@@ -31,7 +31,7 @@ int	is_mode_flag(char *arg, t_mode *mode)
 	return (1);
 }
 
-static void	parse_mode(int argc, char **argv, t_mode *mode)
+static void	parse_mode(int argc, char **argv, t_mode *mode, t_stack	*stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	flag_count;
@@ -44,13 +44,13 @@ static void	parse_mode(int argc, char **argv, t_mode *mode)
 	{
 		result = is_mode_flag(argv[i], mode);
 		if (result == -1)
-			print_error(NULL);
+			print_error(stack_a, stack_b);
 		if (result == 1)
 			flag_count++;
 		i++;
 	}
 	if (flag_count > 1)
-		print_error(NULL);
+		print_error(stack_a, stack_b);
 }
 
 static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_mode mode)
@@ -65,7 +65,7 @@ static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_mode mode)
 		adaptive_sort(stack_a, stack_b);
 }
 
-	int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
@@ -79,8 +79,8 @@ static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_mode mode)
 		return (1);
 	init_stack(stack_a);
 	init_stack(stack_b);
-	parse_args(argc, argv, stack_a);
-	parse_mode(argc, argv, &mode);
+	parse_mode(argc, argv, &mode, stack_a, stack_b);
+	parse_args(argc, argv, stack_a, stack_b);
 	index_stack(stack_a);
 	if (stack_a->size > 1 && !is_sorted(stack_a))
 		run_sort(&stack_a, &stack_b, mode);

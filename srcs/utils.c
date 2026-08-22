@@ -33,10 +33,18 @@ int	is_number(char *str)
 	return (1);
 }
 
-void	print_error(t_stack *stack)
+void	print_error(t_stack *stack_a, t_stack *stack_b)
 {
-	if(stack)
-		free_stack(stack);
+	if (stack_a)
+	{
+		free_stack(stack_a);
+		free(stack_a);
+	}
+	if (stack_b)
+	{
+		free_stack(stack_b);
+		free(stack_b);
+	}
 	ft_putendl_fd("Error", 2);
 	exit(1);
 }
