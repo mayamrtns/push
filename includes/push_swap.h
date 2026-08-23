@@ -58,6 +58,14 @@ typedef struct s_op_count
 	int	rrr;
 }    t_op_count;
 
+typedef struct s_context
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	t_mode	mode;
+	int		bench;
+}	t_context;
+
 //srcs/utils.c
 int	is_number(char *str);
 void	print_error(t_stack *stack_a, t_stack *stack_b);
@@ -65,7 +73,7 @@ void	print_operations(char *name_op);
 t_op_count get_op_count(void);
 //srcs/parsing.c
 int	has_duplicate(t_node *top, int number);
-void	parse_args(int argc, char **argv, t_stack *stack_a, t_stack *stack_b);
+void	parse_args(int argc, char **argv, t_context *context);
 //srcs/stack_utils.c
 void	init_stack(t_stack *stack);
 t_node *create_node(int value);
@@ -112,6 +120,6 @@ void	radix_sort(t_stack **a, t_stack **b);
 //sort/adaptative_sort.c
 void	adaptive_sort(t_stack **stack_a, t_stack **stack_b);
 //srcs/main.c
-int	is_mode_flag(char *arg, t_mode *mode);
+int	is_mode_flag(char *arg, t_context *context);
 
 #endif
