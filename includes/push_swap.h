@@ -64,6 +64,8 @@ typedef struct s_context
 	t_stack	*stack_b;
 	t_mode	mode;
 	int		bench;
+	double	disorder_result;
+	t_mode strategy_used;
 }	t_context;
 
 //srcs/utils.c
@@ -118,7 +120,7 @@ int		get_max_bits(t_stack *stack_a);
 int get_bit(int value, int position);
 void	radix_sort(t_stack **a, t_stack **b);
 //sort/adaptative_sort.c
-void	adaptive_sort(t_stack **stack_a, t_stack **stack_b);
+void	adaptive_sort(t_stack **stack_a, t_stack **stack_b,  t_context *context);
 //srcs/main.c
 int	is_mode_flag(char *arg, t_context *context);
 

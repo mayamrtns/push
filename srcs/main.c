@@ -58,20 +58,31 @@ static void	parse_mode(int argc, char **argv, t_context *context)
 		print_error(context->stack_a, context->stack_b);
 }
 
-static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_mode mode)
+static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	if ((*stack_a)->size == 2)
 		sort_two(stack_a);
 	else if ((*stack_a)->size == 3)
 		sort_three(stack_a);
-	else if (mode == SIMPLE)
+	else if (context->mode == SIMPLE)
+	{
 		ft_selection_sort(stack_a, stack_b);
-	else if (mode == MEDIUM)
+		context->strategy_used = SIMPLE;
+	}
+	else if (context->mode == MEDIUM)
+	{
 		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size));
-	else if (mode == COMPLEX)
+		context->strategy_used = MEDIUM;
+	}
+	else if (context->mode == COMPLEX)
+	{
 		radix_sort(stack_a, stack_b);
+		context->strategy_used = COMPLEX;
+	}
 	else
-		adaptive_sort(stack_a, stack_b);
+	{
+		adaptive_sort(stack_a, stack_b, context);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -88,9 +99,10 @@ int	main(int argc, char **argv)
 	init_stack(context.stack_b);
 	parse_mode(argc, argv, &context);
 	parse_args(argc, argv, &context);
+	context.disorder_result = compute_disorder(context.stack_a);
 	index_stack(context.stack_a);
 	if (context.stack_a->size > 1 && !is_sorted(context.stack_a))
-		run_sort(&context.stack_a, &context.stack_b, context.mode);
+		run_sort(&context.stack_a, &context.stack_b, &context);
 	free_stack(context.stack_a);
 	free_stack(context.stack_b);
 	free(context.stack_a);
