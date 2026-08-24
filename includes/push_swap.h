@@ -123,5 +123,9 @@ void	radix_sort(t_stack **a, t_stack **b);
 void	adaptive_sort(t_stack **stack_a, t_stack **stack_b,  t_context *context);
 //srcs/main.c
 int	is_mode_flag(char *arg, t_context *context);
+//src/bench_utils.c
+char *convert_disorder (double disorder);
+//srcs/bench_print.c 
+void print_bench(t_context *context);
 
 #endif

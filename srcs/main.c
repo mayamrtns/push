@@ -99,10 +99,13 @@ int	main(int argc, char **argv)
 	init_stack(context.stack_b);
 	parse_mode(argc, argv, &context);
 	parse_args(argc, argv, &context);
+	context.strategy_used = context.mode;
 	context.disorder_result = compute_disorder(context.stack_a);
 	index_stack(context.stack_a);
 	if (context.stack_a->size > 1 && !is_sorted(context.stack_a))
 		run_sort(&context.stack_a, &context.stack_b, &context);
+	if (context.bench == 1)
+		print_bench(&context);
 	free_stack(context.stack_a);
 	free_stack(context.stack_b);
 	free(context.stack_a);
