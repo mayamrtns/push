@@ -13,5 +13,7 @@ char	*ft_strdup(const char *s1);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_itoa(int n);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
