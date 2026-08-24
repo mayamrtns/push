@@ -49,7 +49,7 @@ void	print_error(t_stack *stack_a, t_stack *stack_b)
 	exit(1);
 }
 
-static	t_op_count count = {0};
+static	t_op_count count = {0}; //verificar se pode fazer isso!!!!ATENÇÃO!!!
 
 void	print_operations(char *name_op)
 {
