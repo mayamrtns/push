@@ -22,6 +22,8 @@ SRC = srcs/main.c \
 	srcs/stack_utils.c \
 	srcs/utils.c \
 	srcs/analysis.c \
+	srcs/bench_utils.c \
+	srcs/bench_print.c \
 	libft/ft_atol.c \
 	libft/ft_isdigit.c \
 	libft/ft_putstr_fd.c \
@@ -31,6 +33,8 @@ SRC = srcs/main.c \
 	libft/ft_strlen.c \
 	libft/ft_substr.c \
 	libft/ft_strncmp.c\
+	libft/ft_itoa.c \
+	libft/ft_strjoin.c \
 	operations/ft_rerotate.c\
 	operations/ft_rotate.c\
 	operations/ft_swap.c\
@@ -66,11 +70,13 @@ fclean: clean
 re: fclean all
 
 # Lista de fontes de teste (igual ao SRC, mas sem srcs/main.c, com test_main.c)
-TEST_SRC    = ssrcs/main.c \
+TEST_SRC    = srcs/main.c \
 	srcs/parsing.c \
 	srcs/stack_utils.c \
 	srcs/utils.c \
 	srcs/analysis.c \
+	srcs/bench_utils.c \
+	srcs/bench_print.c \
 	libft/ft_atol.c \
 	libft/ft_isdigit.c \
 	libft/ft_putstr_fd.c \
@@ -80,6 +86,8 @@ TEST_SRC    = ssrcs/main.c \
 	libft/ft_strlen.c \
 	libft/ft_substr.c \
 	libft/ft_strncmp.c\
+	libft/ft_itoa.c \
+	libft/ft_strjoin.c \
 	operations/ft_rerotate.c\
 	operations/ft_rotate.c\
 	operations/ft_swap.c\

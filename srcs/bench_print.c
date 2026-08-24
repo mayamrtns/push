@@ -1,0 +1,88 @@
+#include "push_swap.h"
+
+static void	print_disorder(t_context *context, int fd)
+{
+	char *str_disorder;
+
+	str_disorder = convert_disorder(context->disorder_result);
+	if(!str_disorder)
+		return ;
+	ft_putstr_fd("[bench] disorder: ",fd);
+	ft_putstr_fd(str_disorder,fd);
+	ft_putstr_fd("%",fd);
+	ft_putstr_fd("\n",fd);
+	free(str_disorder);
+}
+
+static char	*strategy_name(t_mode mode)
+{
+	if (mode == SIMPLE)
+		return ("Simple / (O(n²)");
+	if (mode == MEDIUM)
+		return ("Medium /  O(n√n)");
+	if (mode == COMPLEX)
+		return ("Complex / O(n log n)");
+	return("Adaptive");
+}
+
+static void	print_op(char *label, int value, int fd)
+{
+	char *str;
+
+	str = ft_itoa(value);
+	if (!str)
+		return ;
+	ft_putstr_fd(label, fd);
+	ft_putstr_fd(str, fd);
+	free(str);
+}
+
+static void print_total_ops(t_op_count count, int fd)
+{
+	int total_op;
+	char *total;
+
+	total_op = count.sa + count.sb + count.ss + count.pa + count.pb  + count.ra + count.rb + count.rr + count.rra + count.rrb + count.rrr;
+	total = ft_itoa(total_op);
+	ft_putstr_fd("[bench] total_ops: ", fd);
+	ft_putstr_fd(total, fd);
+	ft_putstr_fd("\n",fd);
+	free(total);
+
+}
+
+static void print_strategy(t_context *context, int fd)
+{
+	char *str_strategy;
+
+	str_strategy = strategy_name(context->strategy_used);
+	ft_putstr_fd("[bench] strategy: ",fd);
+	ft_putstr_fd(str_strategy,fd);
+	ft_putstr_fd("\n",fd);
+}
+
+void	print_bench(t_context *context)
+{
+	t_op_count count; 
+	
+	count = get_op_count();
+	print_disorder(context, 2);
+	print_strategy(context, 2);
+	print_total_ops(count, 2);
+	ft_putstr_fd("[bench] ", 2);
+	print_op("sa: ", count.sa, 2);
+	print_op(" sb: ", count.sb, 2);
+	print_op(" ss: ", count.ss, 2);
+	print_op(" pa: ", count.pa, 2);
+	print_op(" pb: ", count.pb, 2);
+	ft_putstr_fd("\n",2);
+	ft_putstr_fd("[bench] ", 2);
+	print_op("ra: ", count.ra, 2);
+	print_op(" rb: ", count.rb, 2);
+	print_op(" rr: ", count.rr, 2);
+	print_op(" rra: ", count.rra, 2);
+	print_op(" rrb: ", count.rrb, 2);
+	print_op(" rrr: ", count.rrr, 2);
+	ft_putstr_fd("\n",2);
+
+}
