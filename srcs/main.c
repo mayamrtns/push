@@ -6,7 +6,7 @@
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:26 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/21 18:53:48 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/24 15:53:18 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
+	context.bench = 0;
 	context.stack_a = malloc(sizeof(t_stack));
 	context.stack_b = malloc(sizeof(t_stack));
 	if (!context.stack_a || !context.stack_b)
@@ -113,10 +114,3 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-// 	sort_two(&stack_a);
-	// else if (stack_a->size == 3)
-	// 	sort_three(&stack_a);
-	// else if (stack_a->size <= 5)
-	//	sort_five(&stack_a, &stack_b);
-	// else
-	// 	chunk_sort(&stack_a, &stack_b, get_chunk_size(stack_a->size));
