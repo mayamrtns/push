@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_two(t_stack **stack_a)
+void	sort_two(t_stack **stack_a, t_context *context)
 {
 	t_node	*first;
 	t_node	*second;
@@ -22,7 +22,7 @@ void	sort_two(t_stack **stack_a)
 	first = (*stack_a)->top;
 	second = first->next;
 	if (first->value > second->value)
-		sa(stack_a);
+		sa(stack_a, context);
 }
 
 //sa =Troca a posição dos 2 primeiros elementos que estão no topo da stack_a.
@@ -35,7 +35,7 @@ void	sort_two(t_stack **stack_a)
 //5 -> (231) = rra
 
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack **a, t_context *context)
 {
 	int	first;
 	int	second;
@@ -48,19 +48,19 @@ void	sort_three(t_stack **a)
 		return ;
 	else if (first < third && third < second)
 	{
-		sa(a);
-		ra(a);
+		sa(a, context);
+		ra(a, context);
 	}
 	else if (second < first && first < third)
-		sa(a);
+		sa(a, context);
 	else if (second < third && third < first)
-		ra(a);
+		ra(a, context);
 	else if (third < first && first < second)
-		rra(a);
+		rra(a, context);
 	else if (third < second && second < first)
 	{
-		sa(a);
-		rra(a);
+		sa(a, context);
+		rra(a, context);
 	}
 }
 
@@ -90,7 +90,7 @@ static int	find_min_position(t_stack *a)
 	return (pos);
 }
 
-static void	move_min_to_top(t_stack **a)
+static void	move_min_to_top(t_stack **a, t_context *context)
 {
 	int	pos;
 
@@ -98,22 +98,22 @@ static void	move_min_to_top(t_stack **a)
 	while (pos != 0)
 	{
 		if (pos <= (*a)->size / 2)
-			ra(a);
+			ra(a, context);
 		else
-			rra(a);
+			rra(a, context);
 		pos = find_min_position(*a);
 	}
 }
 
-void	sort_five(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b, t_context *context)
 {
 	if (!a || !*a)
 		return ;
-	move_min_to_top(a);
-	pb(a, b);
-	move_min_to_top(a);
-	pb(a, b);
-	sort_three(a);
-	pa(a, b);
-	pa(a, b);
+	move_min_to_top(a, context);
+	pb(a, b, context);
+	move_min_to_top(a, context);
+	pb(a, b, context);
+	sort_three(a, context);
+	pa(a, b, context);
+	pa(a, b, context);
 }

@@ -92,7 +92,7 @@ void	print_bench(t_context *context)
 {
 	t_op_count	count;
 
-	count = get_op_count();
+	count = context->op_count;
 	print_disorder(context, 2);
 	print_strategy(context, 2);
 	print_total_ops(count, 2);

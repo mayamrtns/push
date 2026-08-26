@@ -34,7 +34,7 @@ int get_bit(int value, int position)
 	return ((value >> position) & 1);
 }
 
-static void	sort_by_bit(t_stack **a, t_stack **b, int bit)
+static void	sort_by_bit(t_stack **a, t_stack **b, int bit,  t_context *context)
 {
 	int	total;
 
@@ -42,16 +42,16 @@ static void	sort_by_bit(t_stack **a, t_stack **b, int bit)
 	while (total > 0) //percorre a stack A inteira exatamente uma vez
 	{
 		if (get_bit((*a)->top->index, bit) == 0)
-			pb(a, b);
+			pb(a, b, context);
 		else
-			ra(a);
+			ra(a, context);
 		total--;
 	} //elementos com bit 0 vao pra B e elementos com bit 1 vao pra A
 	while ((*b)->top)
-		pa(a, b); //devolve tudo de B para A com pa
+		pa(a, b, context); //devolve tudo de B para A com pa
 }
 
-void	radix_sort(t_stack **a, t_stack **b)
+void	radix_sort(t_stack **a, t_stack **b,  t_context *context)
 {
 	int	max_bits;
 	int	bit;
@@ -62,7 +62,7 @@ void	radix_sort(t_stack **a, t_stack **b)
 	bit = 0;
 	while (bit < max_bits)
 	{
-		sort_by_bit(a, b, bit); //roda uma vez para cada bit, do menos significativo ao mais significativo
+		sort_by_bit(a, b, bit, context); //roda uma vez para cada bit, do menos significativo ao mais significativo
 		bit++;
 	}
 }//no fim, a  stack A esta ordenada

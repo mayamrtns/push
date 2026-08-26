@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high)
+void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high,  t_context *context)
 {
 	int	total;
 
@@ -20,14 +20,14 @@ void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high)
 	while (total > 0)
 	{
 		if ((*stack_a)->top->index >= low && (*stack_a)->top->index <= high)
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, context);
 		else
-			ra(stack_a);
+			ra(stack_a, context);
 		total--;
 	}
 }
 
-void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size)
+void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size,  t_context *context)
 {
 	int	num_chunks;
 	int	low;
@@ -42,13 +42,13 @@ void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size)
 	{
 		low = c * chunk_size;
 		high = low + chunk_size - 1;
-		push_chunk(stack_a, stack_b, low, high);
-		push_back(stack_a, stack_b);
+		push_chunk(stack_a, stack_b, low, high, context);
+		push_back(stack_a, stack_b, context);
 		c--;
 	}
 }
 
-void	push_back(t_stack **stack_a, t_stack **stack_b)
+void	push_back(t_stack **stack_a, t_stack **stack_b,  t_context *context)
 {
 	int		k;
 	int		size;
@@ -64,14 +64,14 @@ void	push_back(t_stack **stack_a, t_stack **stack_b)
 		if (k <= size / 2)
 		{
 			while ((*stack_b)->top != big)
-			rb(stack_b);
+			rb(stack_b, context);
 		}
 		else
 		{
 			while ((*stack_b)->top != big)
-			rrb(stack_b);
+			rrb(stack_b, context);
 		}
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, context);
 	}
 }
 

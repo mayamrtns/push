@@ -21,17 +21,17 @@ void	adaptive_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
 	stack_disorder = context->disorder_result;
 	if (stack_disorder < 0.2)
 	{
-		ft_selection_sort(stack_a, stack_b);
+		ft_selection_sort(stack_a, stack_b, context);
 		context->strategy_used = SIMPLE;
 	}
 	else if (stack_disorder < 0.5)
 	{
-		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size));
+		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size), context);
 		context->strategy_used = MEDIUM;
 	}
 	else
 	{
-		radix_sort(stack_a, stack_b);
+		radix_sort(stack_a, stack_b, context);
 		context->strategy_used = COMPLEX;
 	}
 }

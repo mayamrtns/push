@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void	ft_selection_sort(t_stack **stack_a, t_stack **stack_b)
+void	ft_selection_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	int	size;
 
 	if (!stack_a || !*stack_a || !(*stack_a)->top)
 		return ;
 	size = (*stack_a)->size;
-	push_chunk(stack_a, stack_b, 0, size - 1);
-	push_back(stack_a, stack_b);
+	push_chunk(stack_a, stack_b, 0, size - 1, context);
+	push_back(stack_a, stack_b, context);
 }

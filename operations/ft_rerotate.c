@@ -30,27 +30,27 @@ void	ft_rerotate(t_stack **stack)
 	(*stack)->bottom = aux;
 }
 
-void	rra(t_stack **stack_a)
+void	rra(t_stack **stack_a, t_context *context)
 
 {
 	ft_rerotate(stack_a);
 	//write(1, "rra\n", 4);
-	print_operations("rra");
+	print_operations("rra", context);
 }
 
-void	rrb(t_stack **stack_b)
+void	rrb(t_stack **stack_b, t_context *context)
 
 {
 	ft_rerotate(stack_b);
 	//write(1, "rrb\n", 4);
-	print_operations("rrb");
+	print_operations("rrb", context);
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_context *context)
 
 {
 	ft_rerotate(stack_a);
 	ft_rerotate(stack_b);
 	//write(1, "rrr\n", 4);
-	print_operations("rrr");
+	print_operations("rrr", context);
 }

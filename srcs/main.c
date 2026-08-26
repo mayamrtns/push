@@ -61,28 +61,40 @@ static void	parse_mode(int argc, char **argv, t_context *context)
 static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	if ((*stack_a)->size == 2)
-		sort_two(stack_a);
+		sort_two(stack_a, context);
 	else if ((*stack_a)->size == 3)
-		sort_three(stack_a);
+		sort_three(stack_a, context);
 	else if (context->mode == SIMPLE)
 	{
-		ft_selection_sort(stack_a, stack_b);
+		ft_selection_sort(stack_a, stack_b, context);
 		context->strategy_used = SIMPLE;
 	}
 	else if (context->mode == MEDIUM)
 	{
-		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size));
+		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size), context);
 		context->strategy_used = MEDIUM;
 	}
 	else if (context->mode == COMPLEX)
 	{
-		radix_sort(stack_a, stack_b);
+		radix_sort(stack_a, stack_b, context);
 		context->strategy_used = COMPLEX;
 	}
 	else
 	{
 		adaptive_sort(stack_a, stack_b, context);
 	}
+}
+static int init_context(t_context *context)
+{
+	context->bench = 0;
+	context->op_count = (t_op_count){0};
+	context->stack_a = malloc(sizeof(t_stack));
+	context->stack_b = malloc(sizeof(t_stack));
+	if (!context->stack_a || !context->stack_b)
+		return (1);
+	init_stack(context->stack_a);
+	init_stack(context->stack_b);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -91,13 +103,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	context.bench = 0;
-	context.stack_a = malloc(sizeof(t_stack));
-	context.stack_b = malloc(sizeof(t_stack));
-	if (!context.stack_a || !context.stack_b)
-		return (1);
-	init_stack(context.stack_a);
-	init_stack(context.stack_b);
+	if (!init_context(&context))
+		return(1);
 	parse_mode(argc, argv, &context);
 	parse_args(argc, argv, &context);
 	context.strategy_used = context.mode;

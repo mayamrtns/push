@@ -37,24 +37,24 @@ void	ft_swap(t_stack **stack)
 	(*stack)->top = second;
 }
 
-void	sa(t_stack **stack_a)
+void	sa(t_stack **stack_a, t_context *context)
 {
 	ft_swap (stack_a);
 	//write(1, "sa\n", 3);
-	print_operations("sa");
+	print_operations("sa", context);
 }
 
-void	sb(t_stack **stack_b)
+void	sb(t_stack **stack_b, t_context *context)
 {
 	ft_swap(stack_b);
 	//write(1, "sb\n", 3);
-	print_operations("sb");
+	print_operations("sb", context);
 }
 
-void	ss(t_stack **stack_a, t_stack **stack_b)
+void	ss(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
 	//write(1, "ss\n", 3);
-	print_operations("ss");
+	print_operations("ss", context);
 }

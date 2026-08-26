@@ -64,6 +64,7 @@ typedef struct s_context
 	t_stack	*stack_b;
 	t_mode	mode;
 	int		bench;
+	t_op_count op_count;
 	double	disorder_result;
 	t_mode strategy_used;
 }	t_context;
@@ -71,8 +72,7 @@ typedef struct s_context
 //srcs/utils.c
 int	is_number(char *str);
 void	print_error(t_stack *stack_a, t_stack *stack_b);
-void	print_operations(char *name_op);
-t_op_count get_op_count(void);
+void	print_operations(char *name_op, t_context *context);
 //srcs/parsing.c
 int	has_duplicate(t_node *top, int number);
 void	parse_args(int argc, char **argv, t_context *context);
@@ -86,39 +86,39 @@ double	compute_disorder ( t_stack *stack_a);
 void	index_stack(t_stack *stack_a);
 int	is_sorted(t_stack *stack);
 //srcs/sort_base.c
-void	sort_two(t_stack **stack_a);
-void	sort_three(t_stack **stack_a);
+void	sort_two(t_stack **stack_a, t_context *context);
+void	sort_three(t_stack **stack_a, t_context *context);
 //operations/ft_rerotate.c
-void	rra(t_stack **stack_a);
-void	rrb(t_stack **stack_b);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
+void	rra(t_stack **stack_a, t_context *context);
+void	rrb(t_stack **stack_b, t_context *context);
+void	rrr(t_stack **stack_a, t_stack **stack_b, t_context *context);
 //operations/ft_rotate.c
-void	ra(t_stack **stack_a);
-void	rb(t_stack **stack_b);
-void	rr(t_stack **stack_a, t_stack **stack_b);
+void	ra(t_stack **stack_a, t_context *context);
+void	rb(t_stack **stack_b, t_context *context);
+void	rr(t_stack **stack_a, t_stack **stack_b, t_context *context);
 //operations/ft_swap.c
 void	ft_swap(t_stack **stack);
-void	sa(t_stack **stack_a);
-void	sb(t_stack **stack_b);
-void	ss(t_stack **stack_a, t_stack **stack_b);
+void	sa(t_stack **stack_a, t_context *context);
+void	sb(t_stack **stack_b, t_context *context);
+void	ss(t_stack **stack_a, t_stack **stack_b, t_context *context);
 //operations/ft_push.c
 void	ft_push(t_stack **src, t_stack **dst);
-void	pa(t_stack **stack_a, t_stack **stack_b);
-void	pb(t_stack **stack_a, t_stack **stack_b);
+void	pa(t_stack **stack_a, t_stack **stack_b, t_context *context);
+void	pb(t_stack **stack_a, t_stack **stack_b, t_context *context);
 //sort/selection_sort.c
-void	ft_selection_sort(t_stack **stack_a, t_stack **stack_b);
+void	ft_selection_sort(t_stack **stack_a, t_stack **stack_b,  t_context *context);
 //sort/chunk_sort.c
-void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high);
-void	push_back(t_stack **stack_a, t_stack **stack_b);
+void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high,  t_context *context);
+void	push_back(t_stack **stack_a, t_stack **stack_b,  t_context *context);
 int		get_chunk_size(int size);
-void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size);
+void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size,  t_context *context);
 //sort/chunk_utils.c
 t_node	*find_big(t_stack *stack_b);
 int		get_position(t_node *top, t_node *target);
 //sort/radix_sort.c
 int		get_max_bits(t_stack *stack_a);
 int get_bit(int value, int position);
-void	radix_sort(t_stack **a, t_stack **b);
+void	radix_sort(t_stack **a, t_stack **b,  t_context *context);
 //sort/adaptative_sort.c
 void	adaptive_sort(t_stack **stack_a, t_stack **stack_b,  t_context *context);
 //srcs/main.c

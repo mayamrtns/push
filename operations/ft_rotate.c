@@ -30,23 +30,23 @@ static void	ft_rotate(t_stack **stack)
 	(*stack)->bottom = first;
 }
 
-void	ra(t_stack **stack_a)
+void	ra(t_stack **stack_a, t_context *context)
 {
 	ft_rotate(stack_a);
 	//ft_putendl_fd("ra",1);
-	print_operations("ra");
+	print_operations("ra", context);
 }
 
-void	rb(t_stack **stack_b)
+void	rb(t_stack **stack_b, t_context *context)
 {
 	ft_rotate(stack_b);
 	//ft_putendl_fd("rb",1);
-	print_operations("rb");
+	print_operations("rb", context);
 }
-void	rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
 	//ft_putendl_fd("rr",1);
-	print_operations("rr");
+	print_operations("rr", context);
 }

@@ -49,36 +49,29 @@ void	print_error(t_stack *stack_a, t_stack *stack_b)
 	exit(1);
 }
 
-static	t_op_count count = {0}; //verificar se pode fazer isso!!!!ATENÇÃO!!!
-
-void	print_operations(char *name_op)
+void	print_operations(char *name_op, t_context *context)
 {
 	ft_putendl_fd(name_op,1);
 	if (ft_strncmp(name_op, "sa", 3) == 0)
-		count.sa++;
+		context->op_count.sa++;
 	else if (ft_strncmp(name_op, "sb", 3) == 0)
-		count.sb++;
+		context->op_count.sb++;
 	else if (ft_strncmp(name_op, "ss", 3) == 0)
-		count.ss++;
+		context->op_count.ss++;
 	else if (ft_strncmp(name_op, "pa", 3) == 0)
-		count.pa++;
+		context->op_count.pa++;
 	else if (ft_strncmp(name_op, "pb", 3) == 0)
-		count.pb++;
+		context->op_count.pb++;
 	else if (ft_strncmp(name_op, "ra", 3) == 0)
-		count.ra++;
+		context->op_count.ra++;
 	else if (ft_strncmp(name_op, "rb", 3) == 0)
-		count.rb++;
+		context->op_count.rb++;
 	else if (ft_strncmp(name_op, "rr", 3) == 0)
-		count.rr++;
+		context->op_count.rr++;
 	else if (ft_strncmp(name_op, "rra", 4) == 0)
-		count.rra++;
+		context->op_count.rra++;
 	else if (ft_strncmp(name_op, "rrb", 4) == 0)
-		count.rrb++;
+		context->op_count.rrb++;
 	else if (ft_strncmp(name_op, "rrr", 4) == 0)
-		count.rrr++;
-}
-
-t_op_count get_op_count(void)
-{
-	return (count);
+		context->op_count.rrr++;
 }
