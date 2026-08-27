@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:26 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 18:10:10 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:00:27 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	context.disorder_result = compute_disorder(context.stack_a);
 	index_stack(context.stack_a);
 	if (context.stack_a->size > 1 && !is_sorted(context.stack_a))
-		run_sort(&context.stack_a, &context.stack_b, &context);
+		run_sort(&context);
 	if (context.bench == 1)
 		print_bench(&context);
 	free_stack(context.stack_a);

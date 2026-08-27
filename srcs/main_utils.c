@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:09:46 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 18:11:22 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:14:07 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,29 +56,14 @@ void	parse_mode(int argc, char **argv, t_context *context)
 		print_error(context->stack_a, context->stack_b);
 }
 
-void	run_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
+void	run_sort(t_context *context)
 {
-	if ((*stack_a)->size == 2)
-		sort_two(stack_a, context);
-	else if ((*stack_a)->size == 3)
-		sort_three(stack_a, context);
-	else if (context->mode == SIMPLE)
-	{
+	if (context->mode == SIMPLE)
 		ft_selection_sort(context);
-		context->strategy_used = SIMPLE;
-	}
 	else if (context->mode == MEDIUM)
-	{
 		chunk_sort(context, get_chunk_size(context->stack_a->size));
-		context->strategy_used = MEDIUM;
-	}
 	else if (context->mode == COMPLEX)
-	{
-		radix_sort(stack_a, stack_b, context);
-		context->strategy_used = COMPLEX;
-	}
+		radix_sort(context);
 	else
-	{
-		adaptive_sort(stack_a, stack_b, context);
-	}
+		adaptive_sort(context);
 }

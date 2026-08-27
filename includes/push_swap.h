@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 20:05:13 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 18:14:39 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:14:02 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,9 @@ double	compute_disorder(t_stack *stack_a);
 void	index_stack(t_stack *stack_a);
 int		is_sorted(t_stack *stack);
 //srcs/sort_base.c
-void	sort_two(t_stack **stack_a, t_context *context);
-void	sort_three(t_stack **stack_a, t_context *context);
+void	sort_two(t_context *context);
+void	sort_three(t_context *context);
+void	sort_five(t_context *context);
 //operations/ft_rerotate.c
 void	rra(t_stack **stack_a, t_context *context);
 void	rrb(t_stack **stack_b, t_context *context);
@@ -118,13 +119,15 @@ int		get_position(t_node *top, t_node *target);
 //sort/radix_sort.c
 int		get_max_bits(t_stack *stack_a);
 int		get_bit(int value, int position);
-void	radix_sort(t_stack **a, t_stack **b, t_context *context);
+void	radix_sort(t_context *context);
 //sort/adaptative_sort.c
-void	adaptive_sort(t_stack **stack_a, t_stack **stack_b, t_context *context);
+void	adaptive_sort(t_context *context);
+//sort/sort_dispatch.c
+int	handle_small_sort(t_context *context, t_mode mode);
 //srcs/main_utils.c
 int		is_mode_flag(char *arg, t_context *context);
 void	parse_mode(int argc, char **argv, t_context *context);
-void	run_sort(t_stack **stack_a, t_stack **stack_b, t_context *context);
+void	run_sort(t_context *context);
 //src/bench_utils.c
 char	*convert_disorder(double disorder);
 //srcs/bench_print.c

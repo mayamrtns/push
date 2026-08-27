@@ -3,20 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/21 18:17:18 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 17:40:02 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:14:10 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	adaptive_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
+void	adaptive_sort(t_context *context)
 {
+
 	double	stack_disorder;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->top || !(*stack_a)->top->next)
+	if (!context->stack_a || !context->stack_a->top
+		|| !context->stack_a->top->next)
+		return ;
+	if (handle_small_sort(context, ADAPTIVE))
 		return ;
 	stack_disorder = context->disorder_result;
 	if (stack_disorder < 0.2)
@@ -31,7 +35,7 @@ void	adaptive_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
 	}
 	else
 	{
-		radix_sort(stack_a, stack_b, context);
+		radix_sort(context);
 		context->strategy_used = COMPLEX;
 	}
 }

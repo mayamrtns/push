@@ -44,6 +44,7 @@ SRC = srcs/main.c \
 	sort/chunk_sort.c\
 	sort/chunk_utils.c\
 	sort/selection_sort.c\
+	sort/sort_dispatch.c\
 	sort/sort_base.c\
 	sort/radix_sort.c\
 	sort/adaptive_sort.c

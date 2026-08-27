@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 17:19:20 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 17:22:29 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 18:57:47 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	chunk_sort(t_context *context, int chunk_size)
 	int	high;
 	int	c;
 
-	if (!context->stack_a || !context->stack_a || !context->stack_a->top)
+	if (!context->stack_a || !context->stack_a->top)
+		return ;
+	if (handle_small_sort(context, MEDIUM))
 		return ;
 	num_chunks = (context->stack_a->size + chunk_size - 1) / chunk_size;
 	c = num_chunks - 1;
@@ -47,6 +49,7 @@ void	chunk_sort(t_context *context, int chunk_size)
 		push_back(&context->stack_a, &context->stack_b, context);
 		c--;
 	}
+	context->strategy_used = MEDIUM;
 }
 
 void	push_back(t_stack **stack_a, t_stack **stack_b, t_context *context)

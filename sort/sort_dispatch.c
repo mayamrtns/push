@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selection_sort.c                                   :+:      :+:    :+:   */
+/*   sort_dispatch.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/13 16:52:13 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 18:51:40 by malima-m         ###   ########.fr       */
+/*   Created: 2026/08/27 18:49:20 by malima-m          #+#    #+#             */
+/*   Updated: 2026/08/27 19:18:07 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_selection_sort(t_context *context)
+int	handle_small_sort(t_context *context, t_mode mode)
 {
-
-	int	size;
-
-	if (!context->stack_a || !context->stack_a->top)
-		return ;
-	if (handle_small_sort(context, SIMPLE))
-		return ;
-	size = context->stack_a->size;
-	push_chunk(context, 0, size - 1);
-	push_back(&context->stack_a, &context->stack_b, context);
-	context->strategy_used = SIMPLE;
+	if (context->stack_a->size <= 1)
+		return (1);
+	if (context->stack_a->size == 2)
+		sort_two(context);
+	else if (context->stack_a->size == 3)
+		sort_three(context);
+	else if (context->stack_a->size <= 5)
+		sort_five(context);
+	else
+		return (0);
+	context->strategy_used = mode;
+	return (1);
 }

@@ -3,54 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   sort_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:39 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 17:48:43 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/08/27 19:09:42 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_stack **stack_a, t_context *context)
+void	sort_two(t_context *context)
 {
 	t_node	*first;
 	t_node	*second;
 
-	if (!stack_a || !(*stack_a)->top || !(*stack_a)->top->next)
+	if (!context->stack_a->top || !context->stack_a->top->next)
 		return ;
-	first = (*stack_a)->top;
+	first = context->stack_a->top;
 	second = first->next;
 	if (first->value > second->value)
-		sa(stack_a, context);
+		sa(&context->stack_a, context);
 }
 
-void	sort_three(t_stack **a, t_context *context)
+void	sort_three(t_context *context)
 {
 	int	first;
 	int	second;
 	int	third;
 
-	first = (*a)->top->value;
-	second = (*a)->top->next->value;
-	third = (*a)->top->next->next->value;
+	first = context->stack_a->top->value;
+	second = context->stack_a->top->next->value;
+	third = context->stack_a->top->next->next->value;
 	if (first < second && second < third)
 		return ;
 	else if (first < third && third < second)
 	{
-		sa(a, context);
-		ra(a, context);
+		sa(&context->stack_a, context);
+		ra(&context->stack_a, context);
 	}
 	else if (second < first && first < third)
-		sa(a, context);
+		sa(&context->stack_a, context);
 	else if (second < third && third < first)
-		ra(a, context);
+		ra(&context->stack_a, context);
 	else if (third < first && first < second)
-		rra(a, context);
+		rra(&context->stack_a, context);
 	else if (third < second && second < first)
 	{
-		sa(a, context);
-		rra(a, context);
+		sa(&context->stack_a, context);
+		rra(&context->stack_a, context);
 	}
 }
 
@@ -63,10 +63,10 @@ static int	find_min_position(t_stack *a)
 
 	if (!a || !a->top)
 		return (0);
-	i = 0;
-	pos = 0;
 	actual = a->top;
 	min = actual->value;
+	pos = 0;
+	i = 0;
 	while (actual)
 	{
 		if (actual->value < min)
@@ -80,30 +80,38 @@ static int	find_min_position(t_stack *a)
 	return (pos);
 }
 
-static void	move_min_to_top(t_stack **a, t_context *context)
+static void	move_min_to_top(t_context *context)
 {
 	int	pos;
 
-	pos = find_min_position(*a);
+	pos = find_min_position(context->stack_a);
 	while (pos != 0)
 	{
-		if (pos <= (*a)->size / 2)
-			ra(a, context);
+		if (pos <= context->stack_a->size / 2)
+			ra(&context->stack_a, context);
 		else
-			rra(a, context);
-		pos = find_min_position(*a);
+			rra(&context->stack_a, context);
+		pos = find_min_position(context->stack_a);
 	}
 }
 
-void	sort_five(t_stack **a, t_stack **b, t_context *context)
+void	sort_five(t_context *context)
 {
-	if (!a || !*a)
-		return ;
-	move_min_to_top(a, context);
-	pb(a, b, context);
-	move_min_to_top(a, context);
-	pb(a, b, context);
-	sort_three(a, context);
-	pa(a, b, context);
-	pa(a, b, context);
+	if (context->stack_a->size == 4)
+	{
+		move_min_to_top(context);
+		pb(&context->stack_a, &context->stack_b, context);
+		sort_three(context);
+		pa(&context->stack_a, &context->stack_b, context);
+	}
+	else
+	{
+		move_min_to_top(context);
+		pb(&context->stack_a, &context->stack_b, context);
+		move_min_to_top(context);
+		pb(&context->stack_a, &context->stack_b, context);
+		sort_three(context);
+		pa(&context->stack_a, &context->stack_b, context);
+		pa(&context->stack_a, &context->stack_b, context);
+	}
 }
