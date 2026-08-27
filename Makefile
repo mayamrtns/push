@@ -24,6 +24,8 @@ SRC = srcs/main.c \
 	srcs/analysis.c \
 	srcs/bench_utils.c \
 	srcs/bench_print.c \
+	srcs/bench_strategy.c \
+	srcs/main_utils.c \
 	libft/ft_atol.c \
 	libft/ft_isdigit.c \
 	libft/ft_putstr_fd.c \
@@ -77,6 +79,8 @@ TEST_SRC    = srcs/main.c \
 	srcs/analysis.c \
 	srcs/bench_utils.c \
 	srcs/bench_print.c \
+	srcs/bench_strategy.c \
+	srcs/main_utils.c \
 	libft/ft_atol.c \
 	libft/ft_isdigit.c \
 	libft/ft_putstr_fd.c \

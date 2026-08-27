@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 17:22:14 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/21 19:39:59 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:47:07 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,40 @@ int	get_max_bits(t_stack *stack_a)
 	return (max_bits);
 }
 
-int get_bit(int value, int position)
+int	get_bit(int value, int position)
 {
 	return ((value >> position) & 1);
 }
 
-static void	sort_by_bit(t_stack **a, t_stack **b, int bit,  t_context *context)
+static void	sort_by_bit(t_stack **a, t_stack **b, int bit, t_context *context)
 {
 	int	total;
 
-	total = (*a)->size; //guarda o tamanho original antes de comecar, se nao mudaria a cada pb
-	while (total > 0) //percorre a stack A inteira exatamente uma vez
+	total = (*a)->size;
+	while (total > 0)
 	{
 		if (get_bit((*a)->top->index, bit) == 0)
 			pb(a, b, context);
 		else
 			ra(a, context);
 		total--;
-	} //elementos com bit 0 vao pra B e elementos com bit 1 vao pra A
+	}
 	while ((*b)->top)
-		pa(a, b, context); //devolve tudo de B para A com pa
+		pa(a, b, context);
 }
 
-void	radix_sort(t_stack **a, t_stack **b,  t_context *context)
+void	radix_sort(t_stack **a, t_stack **b, t_context *context)
 {
 	int	max_bits;
 	int	bit;
 
 	if (!a || !*a || !(*a)->top)
 		return ;
-	max_bits = get_max_bits(*a); //calcula quantos bits sao necessarios
+	max_bits = get_max_bits(*a);
 	bit = 0;
 	while (bit < max_bits)
 	{
-		sort_by_bit(a, b, bit, context); //roda uma vez para cada bit, do menos significativo ao mais significativo
+		sort_by_bit(a, b, bit, context);
 		bit++;
 	}
-}//no fim, a  stack A esta ordenada
+}

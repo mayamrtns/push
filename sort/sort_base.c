@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:39 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/24 18:55:13 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:48:43 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ void	sort_two(t_stack **stack_a, t_context *context)
 	if (first->value > second->value)
 		sa(stack_a, context);
 }
-
-//sa =Troca a posição dos 2 primeiros elementos que estão no topo da stack_a.
-//ra = Move o elemento do topo para o fundo da stack_a. Todos os outros elementos "sobem" uma posição.
-//rra = Move o elemento do fundo para o topo da stack_a. Todos os outros elementos "descem" uma posição.
-//1 -> (213) = sa
-//2 -> (321) = sa e rra
-//3 -> (312) = ra
-//4 -> (132) = sa e ra
-//5 -> (231) = rra
-
 
 void	sort_three(t_stack **a, t_context *context)
 {
@@ -66,9 +56,9 @@ void	sort_three(t_stack **a, t_context *context)
 
 static int	find_min_position(t_stack *a)
 {
-	int	i; //contador
-	int	pos; //guardar a posição
-	int	min;
+	int		i;
+	int		pos;
+	int		min;
 	t_node	*actual;
 
 	if (!a || !a->top)

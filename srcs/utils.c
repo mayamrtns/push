@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:48 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/12 19:02:49 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 16:54:34 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //Concentra utilitários genéricos: is_number e exibição de erros no stderr.
 #include "push_swap.h"
-
-
 
 int	is_number(char *str)
 {
@@ -51,7 +49,7 @@ void	print_error(t_stack *stack_a, t_stack *stack_b)
 
 void	print_operations(char *name_op, t_context *context)
 {
-	ft_putendl_fd(name_op,1);
+	ft_putendl_fd(name_op, 1);
 	if (ft_strncmp(name_op, "sa", 3) == 0)
 		context->op_count.sa++;
 	else if (ft_strncmp(name_op, "sb", 3) == 0)

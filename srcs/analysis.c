@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analysis.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 18:47:53 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/21 16:01:59 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 16:50:10 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 // devolvendo um número entre 0.0 (perfeitamente ordenada)
 //  e 1.0 (na pior ordem possível).
 
-double	compute_disorder ( t_stack *stack_a)
+double	compute_disorder( t_stack *stack_a)
 {
-	double mistakes;
-	double total_pairs;
-	t_node *index_i;
-	t_node *index_j;
+	double	mistakes;
+	double	total_pairs;
+	t_node	*index_i;
+	t_node	*index_j;
 
 	if (!stack_a || !stack_a->top || !stack_a->top->next)
 		return (0);
@@ -40,7 +40,7 @@ double	compute_disorder ( t_stack *stack_a)
 		}
 		index_i = index_i->next;
 	}
-	return (mistakes/total_pairs);
+	return (mistakes / total_pairs);
 }
 
 // ela é a "tradutora" entre os valores reais que o
@@ -62,7 +62,7 @@ void	index_stack(t_stack *stack_a)
 	{
 		count = 0;
 		index_j = stack_a->top;
-		while(index_j != NULL)
+		while (index_j != NULL)
 		{
 			if (index_j->value < index_i->value)
 			count++;
@@ -72,6 +72,7 @@ void	index_stack(t_stack *stack_a)
 		index_i = index_i->next;
 	}
 }
+
 int	is_sorted(t_stack *stack)
 {
 	t_node	*current;

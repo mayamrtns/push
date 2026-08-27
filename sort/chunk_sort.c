@@ -3,52 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/17 17:19:20 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/21 18:53:15 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:22:29 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_chunk(t_stack **stack_a, t_stack **stack_b, int low, int high,  t_context *context)
+void	push_chunk(t_context *context, int low, int high)
 {
 	int	total;
 
-	total = (*stack_a)->size;
+	total = context->stack_a->size;
 	while (total > 0)
 	{
-		if ((*stack_a)->top->index >= low && (*stack_a)->top->index <= high)
-			pb(stack_a, stack_b, context);
+		if (context->stack_a->top->index >= low
+			&& context->stack_a->top->index <= high)
+			pb(&context->stack_a, &context->stack_b, context);
 		else
-			ra(stack_a, context);
+			ra(&context->stack_a, context);
 		total--;
 	}
 }
 
-void	chunk_sort(t_stack **stack_a, t_stack **stack_b, int chunk_size,  t_context *context)
+void	chunk_sort(t_context *context, int chunk_size)
 {
 	int	num_chunks;
 	int	low;
 	int	high;
 	int	c;
 
-	if (!stack_a || !*stack_a || !(*stack_a)->top)
+	if (!context->stack_a || !context->stack_a || !context->stack_a->top)
 		return ;
-	num_chunks = ((*stack_a)->size + chunk_size - 1) / chunk_size;
+	num_chunks = (context->stack_a->size + chunk_size - 1) / chunk_size;
 	c = num_chunks - 1;
 	while (c >= 0)
 	{
 		low = c * chunk_size;
 		high = low + chunk_size - 1;
-		push_chunk(stack_a, stack_b, low, high, context);
-		push_back(stack_a, stack_b, context);
+		push_chunk(context, low, high);
+		push_back(&context->stack_a, &context->stack_b, context);
 		c--;
 	}
 }
 
-void	push_back(t_stack **stack_a, t_stack **stack_b,  t_context *context)
+void	push_back(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	int		k;
 	int		size;
@@ -64,12 +65,12 @@ void	push_back(t_stack **stack_a, t_stack **stack_b,  t_context *context)
 		if (k <= size / 2)
 		{
 			while ((*stack_b)->top != big)
-			rb(stack_b, context);
+				rb(stack_b, context);
 		}
 		else
 		{
 			while ((*stack_b)->top != big)
-			rrb(stack_b, context);
+				rrb(stack_b, context);
 		}
 		pa(stack_a, stack_b, context);
 	}

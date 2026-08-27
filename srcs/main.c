@@ -3,88 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:26 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/24 15:53:18 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 18:10:10 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Valida se há argumentos suficientes, chama a inicialização da pilha, dispara o parsing e faz a limpeza ao final.
 #include "push_swap.h"
 
-
-int	is_mode_flag(char *arg, t_context *context)
-{
-	if (ft_strncmp(arg, "--simple", 9) == 0)
-		context->mode = SIMPLE;
-	else if (ft_strncmp(arg, "--medium", 9) == 0)
-		context->mode = MEDIUM;
-	else if (ft_strncmp(arg, "--complex", 10) == 0)
-		context->mode = COMPLEX;
-	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-		context->mode = ADAPTIVE;
-	else if (ft_strncmp(arg, "--bench", 8) == 0)
-	{
-		context->bench = 1;
-		return (2);
-	}
-	else if (ft_strncmp(arg, "--", 2) == 0)
-		return (-1);
-	else
-		return (0);
-	return (1);
-}
-
-static void	parse_mode(int argc, char **argv, t_context *context)
-{
-	int	i;
-	int	flag_count;
-	int	result;
-
-	context->mode = ADAPTIVE;
-	flag_count = 0;
-	i = 1;
-	while (i < argc)
-	{
-		result = is_mode_flag(argv[i], context);
-		if (result == -1)
-			print_error(context->stack_a, context->stack_b);
-		if (result == 1)
-			flag_count++;
-		i++;
-	}
-	if (flag_count > 1)
-		print_error(context->stack_a, context->stack_b);
-}
-
-static void	run_sort(t_stack **stack_a, t_stack **stack_b, t_context *context)
-{
-	if ((*stack_a)->size == 2)
-		sort_two(stack_a, context);
-	else if ((*stack_a)->size == 3)
-		sort_three(stack_a, context);
-	else if (context->mode == SIMPLE)
-	{
-		ft_selection_sort(stack_a, stack_b, context);
-		context->strategy_used = SIMPLE;
-	}
-	else if (context->mode == MEDIUM)
-	{
-		chunk_sort(stack_a, stack_b, get_chunk_size((*stack_a)->size), context);
-		context->strategy_used = MEDIUM;
-	}
-	else if (context->mode == COMPLEX)
-	{
-		radix_sort(stack_a, stack_b, context);
-		context->strategy_used = COMPLEX;
-	}
-	else
-	{
-		adaptive_sort(stack_a, stack_b, context);
-	}
-}
-static int init_context(t_context *context)
+static int	init_context(t_context *context)
 {
 	context->bench = 0;
 	context->op_count = (t_op_count){0};
@@ -104,7 +32,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (!init_context(&context))
-		return(1);
+		return (1);
 	parse_mode(argc, argv, &context);
 	parse_args(argc, argv, &context);
 	context.strategy_used = context.mode;
@@ -120,4 +48,3 @@ int	main(int argc, char **argv)
 	free(context.stack_b);
 	return (0);
 }
-

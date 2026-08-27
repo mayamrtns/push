@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/20 17:53:47 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/20 18:12:58 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:45:37 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ t_node	*find_big(t_stack *stack_b)
 	t_node	*tmp;
 
 	if (!stack_b || !stack_b->top)
-		return (NULL); //TEM que ter o NULL pelo retorno ser t_node
+		return (NULL);
 	big = stack_b->top;
 	tmp = stack_b->top;
-
-	while (tmp) //enquanto tmp existe
+	while (tmp)
 	{
-		if (tmp->index > big->index) //se o index da variavel tmp for maior que a da big, big recebe o valor de tmp e tmp segue para o próximo nó
+		if (tmp->index > big->index)
 			big = tmp;
 		tmp = tmp->next;
 	}
@@ -38,7 +37,7 @@ int	get_position(t_node *top, t_node *target)
 	if (!top || !target)
 		return (-1);
 	k = 0;
-	while (top && top != target) //verificando se é nulo antes de ser igual a target
+	while (top && top != target)
 	{
 		k++;
 		top = top->next;

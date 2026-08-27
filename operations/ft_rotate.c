@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 18:38:39 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/12 18:38:40 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 18:22:11 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -19,7 +18,7 @@ static void	ft_rotate(t_stack **stack)
 	t_node	*last;
 
 	if (!stack || !(*stack)->top || !(*stack)->top->next)
-		return;
+		return ;
 	first = (*stack)->top;
 	last = (*stack)->bottom;
 	(*stack)->top = first->next;
@@ -33,20 +32,18 @@ static void	ft_rotate(t_stack **stack)
 void	ra(t_stack **stack_a, t_context *context)
 {
 	ft_rotate(stack_a);
-	//ft_putendl_fd("ra",1);
 	print_operations("ra", context);
 }
 
 void	rb(t_stack **stack_b, t_context *context)
 {
 	ft_rotate(stack_b);
-	//ft_putendl_fd("rb",1);
 	print_operations("rb", context);
 }
+
 void	rr(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-	//ft_putendl_fd("rr",1);
 	print_operations("rr", context);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 18:40:07 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/18 18:29:02 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 18:16:01 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_push(t_stack **src, t_stack **dst)
 	t_node	*tmp;
 
 	if (!src || !(*src)->top)
-		return;
+		return ;
 	tmp = (*src)->top;
 	(*src)->top = tmp->next;
 	if ((*src)->top)
@@ -37,13 +37,11 @@ void	ft_push(t_stack **src, t_stack **dst)
 void	pa(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	ft_push(stack_b, stack_a);
-	//write(1, "pa\n", 3);
 	print_operations("pa", context);
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b, t_context *context)
 {
 	ft_push(stack_a, stack_b);
-	//write(1, "pb\n", 3);
 	print_operations("pb", context);
 }

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:34 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/20 20:38:38 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/08/27 17:50:06 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//Garante que a entrada não possui duplicatas, trata múltiplos argumentos e orquestra a conversão de texto para nó.
 #include "push_swap.h"
 
 int	has_duplicate(t_node *top, int number)

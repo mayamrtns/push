@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 void	ft_rerotate(t_stack **stack)
 {
-	t_node *aux;
+	t_node	*aux;
 	t_node	*last;
 
 	if (!stack || !(*stack)->top || !(*stack)->top->next)
-		return;
+		return ;
 	aux = (*stack)->bottom->prev;
 	last = (*stack)->bottom;
 	last->next = (*stack)->top;
@@ -31,26 +30,20 @@ void	ft_rerotate(t_stack **stack)
 }
 
 void	rra(t_stack **stack_a, t_context *context)
-
 {
 	ft_rerotate(stack_a);
-	//write(1, "rra\n", 4);
 	print_operations("rra", context);
 }
 
 void	rrb(t_stack **stack_b, t_context *context)
-
 {
 	ft_rerotate(stack_b);
-	//write(1, "rrb\n", 4);
 	print_operations("rrb", context);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b, t_context *context)
-
 {
 	ft_rerotate(stack_a);
 	ft_rerotate(stack_b);
-	//write(1, "rrr\n", 4);
 	print_operations("rrr", context);
 }
