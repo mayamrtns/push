@@ -14,7 +14,6 @@
 
 void	ft_selection_sort(t_context *context)
 {
-
 	int	size;
 
 	if (!context->stack_a || !context->stack_a->top)

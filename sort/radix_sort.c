@@ -42,10 +42,10 @@ static void	sort_by_bit(t_context *context, int bit)
 	while (total > 0)
 	{
 		if (get_bit(context->stack_a->top->index, bit) == 0)
-	pb(&context->stack_a, &context->stack_b, context);
-	else
-		ra(&context->stack_a, context);
-	total--;
+			pb(&context->stack_a, &context->stack_b, context);
+		else
+			ra(&context->stack_a, context);
+		total--;
 	}
 	while (context->stack_b->top)
 		pa(&context->stack_a, &context->stack_b, context);

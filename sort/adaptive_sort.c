@@ -14,7 +14,6 @@
 
 void	adaptive_sort(t_context *context)
 {
-
 	double	stack_disorder;
 
 	if (!context->stack_a || !context->stack_a->top
