@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 long	ft_atol(const char *str);
 int		ft_isdigit(int n);
