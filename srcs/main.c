@@ -19,7 +19,13 @@ static int	init_context(t_context *context)
 	context->stack_a = malloc(sizeof(t_stack));
 	context->stack_b = malloc(sizeof(t_stack));
 	if (!context->stack_a || !context->stack_b)
+	{
+		free(context->stack_a);
+		free(context->stack_b);
+		context->stack_a = NULL;
+		context->stack_b = NULL;
 		return (0);
+	}
 	init_stack(context->stack_a);
 	init_stack(context->stack_b);
 	return (1);
