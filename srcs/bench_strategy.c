@@ -17,7 +17,7 @@ char	*strategy_adaptive(t_context *context)
 	if (context->mode == ADAPTIVE)
 	{
 		if (context->strategy_used == SIMPLE)
-			return ("Adaptive / (O(n²)");
+			return ("Adaptive / O(n²)");
 		if (context->strategy_used == MEDIUM)
 			return ("Adaptive / O(n√n)");
 		if (context->strategy_used == COMPLEX)
@@ -29,7 +29,7 @@ char	*strategy_adaptive(t_context *context)
 char	*strategy_name(t_context *context)
 {
 	if (context->mode == SIMPLE)
-		return ("Simple / (O(n²)");
+		return ("Simple / O(n²)");
 	if (context->mode == MEDIUM)
 		return ("Medium /  O(n√n)");
 	if (context->mode == COMPLEX)

@@ -46,6 +46,9 @@ int	main(int argc, char **argv)
 	index_stack(context.stack_a);
 	if (context.stack_a->size > 1 && !is_sorted(context.stack_a))
 		run_sort(&context);
+	else if (context.mode == ADAPTIVE && (context.stack_a->size <= 1
+			|| is_sorted(context.stack_a)))
+		context.strategy_used = SIMPLE;
 	if (context.bench == 1)
 		print_bench(&context);
 	free_stack(context.stack_a);

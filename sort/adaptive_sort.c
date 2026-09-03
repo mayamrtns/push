@@ -19,8 +19,6 @@ void	adaptive_sort(t_context *context)
 	if (!context->stack_a || !context->stack_a->top
 		|| !context->stack_a->top->next)
 		return ;
-	if (handle_small_sort(context, ADAPTIVE))
-		return ;
 	stack_disorder = context->disorder_result;
 	if (stack_disorder < 0.2)
 	{
