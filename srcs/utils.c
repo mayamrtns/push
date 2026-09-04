@@ -17,7 +17,11 @@ int	is_number(char *str)
 {
 	int	i;
 
+	if (!str || !*str)
+		return (0);
 	i = 0;
+	while (str[i] && (str[i] == ' ' || (str[i]>= '\t' && str[i] <= '\r')))
+		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (str[i] == '\0')
