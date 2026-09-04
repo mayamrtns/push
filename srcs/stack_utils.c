@@ -69,5 +69,5 @@ void	free_stack(t_stack *stack)
 	}
 	stack->top = NULL;
 	stack->size = 0;
-	stack->bottom = 0;
+	stack->bottom = NULL;
 }
