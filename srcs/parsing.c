@@ -45,6 +45,27 @@ static void	process_number(char *arg, t_context *context)
 	add_node_back(context->stack_a, new_node);
 }
 
+static void	process_arg(char *arg, t_context *context)
+{
+	char	**str;
+	int		i;
+
+	str = ft_split(arg, ' ');
+	if (!str)
+		print_error(context->stack_a, context->stack_b);
+	
+	if (!str[0])
+		print_error(context->stack_a, context->stack_b);
+	i = 0;
+	while (str[i])
+	{
+		process_number(str[i], context);
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 void	parse_args(int argc, char **argv, t_context *context)
 {
 	int		i;
@@ -53,7 +74,8 @@ void	parse_args(int argc, char **argv, t_context *context)
 	while (i < argc)
 	{
 		if (is_mode_flag(argv[i], context) == 0)
-			process_number(argv[i], context);
+			//process_number(argv[i], context); //antes
+			process_arg(argv[i], context);
 		i++;
 	}
 }
