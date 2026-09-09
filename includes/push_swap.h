@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 20:05:13 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 19:14:02 by malima-m         ###   ########.fr       */
+/*   Updated: 2026/09/09 17:28:48 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-#include <string.h>
-#include <stdio.h> //remover posteriormente
 # include "../libft/libft.h"
 
 typedef struct s_node
@@ -123,7 +121,7 @@ void	radix_sort(t_context *context);
 //sort/adaptative_sort.c
 void	adaptive_sort(t_context *context);
 //sort/sort_dispatch.c
-int	handle_small_sort(t_context *context, t_mode mode);
+int		handle_small_sort(t_context *context, t_mode mode);
 //srcs/main_utils.c
 int		is_mode_flag(char *arg, t_context *context);
 void	parse_mode(int argc, char **argv, t_context *context);
