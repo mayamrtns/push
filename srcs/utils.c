@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:48 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 16:54:34 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/09 15:43:34 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_number(char *str)
 	if (!str || !*str)
 		return (0);
 	i = 0;
-	while (str[i] && (str[i] == ' ' || (str[i]>= '\t' && str[i] <= '\r')))
+	while (str[i] && (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r')))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 20:05:13 by araissa-          #+#    #+#             */
-/*   Updated: 2026/09/09 17:28:48 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/09 15:45:36 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <string.h>
 # include "../libft/libft.h"
 
 typedef struct s_node

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: malima-m <malima-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:34 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 17:50:06 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/09 15:39:49 by malima-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	process_arg(char *arg, t_context *context)
 	str = ft_split(arg, ' ');
 	if (!str)
 		print_error(context->stack_a, context->stack_b);
-	
 	if (!str[0])
 		print_error(context->stack_a, context->stack_b);
 	i = 0;
@@ -74,7 +73,6 @@ void	parse_args(int argc, char **argv, t_context *context)
 	while (i < argc)
 	{
 		if (is_mode_flag(argv[i], context) == 0)
-			//process_number(argv[i], context); //antes
 			process_arg(argv[i], context);
 		i++;
 	}
