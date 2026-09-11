@@ -6,7 +6,7 @@
 /*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:02:16 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 18:05:51 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/11 16:30:16 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*strategy_name(t_context *context)
 	if (context->mode == SIMPLE)
 		return ("Simple / O(n²)");
 	if (context->mode == MEDIUM)
-		return ("Medium /  O(n√n)");
+		return ("Medium / O(n√n)");
 	if (context->mode == COMPLEX)
 		return ("Complex / O(n log n)");
 	return (strategy_adaptive(context));

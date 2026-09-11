@@ -6,7 +6,7 @@
 /*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/24 18:07:15 by araissa-          #+#    #+#             */
-/*   Updated: 2026/08/27 18:05:32 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/11 16:33:01 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	print_total_ops(t_op_count count, int fd)
 	total_op = count.sa + count.sb + count.ss + count.pa + count.pb
 		+ count.ra + count.rb + count.rr + count.rra + count.rrb + count.rrr;
 	total = ft_itoa(total_op);
+	if (!total)
+		return ;
 	ft_putstr_fd("[bench] total_ops: ", fd);
 	ft_putstr_fd(total, fd);
 	ft_putstr_fd("\n", fd);

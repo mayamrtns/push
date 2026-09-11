@@ -38,7 +38,7 @@ void	ft_swap(t_stack **stack)
 
 void	sa(t_stack **stack_a, t_context *context)
 {
-	ft_swap (stack_a);
+	ft_swap(stack_a);
 	print_operations("sa", context);
 }
 

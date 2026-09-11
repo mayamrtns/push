@@ -6,7 +6,7 @@
 /*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 19:02:43 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 17:50:25 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/11 16:29:44 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_node	*create_node(int value)
 	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
-	node -> value = value;
-	node -> index = -1;
+	node->value = value;
+	node->index = -1;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

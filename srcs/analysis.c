@@ -6,17 +6,13 @@
 /*   By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/12 18:47:53 by malima-m          #+#    #+#             */
-/*   Updated: 2026/08/27 16:50:10 by araissa-         ###   ########.fr       */
+/*   Updated: 2026/09/11 16:31:58 by araissa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//mede o quão "bagunçada" a pilha A está,
-// devolvendo um número entre 0.0 (perfeitamente ordenada)
-//  e 1.0 (na pior ordem possível).
-
-double	compute_disorder( t_stack *stack_a)
+double	compute_disorder(t_stack *stack_a)
 {
 	double	mistakes;
 	double	total_pairs;
@@ -43,12 +39,6 @@ double	compute_disorder( t_stack *stack_a)
 	return (mistakes / total_pairs);
 }
 
-// ela é a "tradutora" entre os valores reais que o
-//  usuário digitou e os índices 0..N-1 que os
-//  algoritmos de ordenação mais avançados precisam pra
-//  funcionar direito.
-//Pilha (valores): [  42,   -7, 1000,    3]
-//Pilha (index):   [   2,    0,    3,    1]
 void	index_stack(t_stack *stack_a)
 {
 	t_node	*index_i;
