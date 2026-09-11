@@ -38,7 +38,7 @@ Este projeto vai além do mínimo pedido e implementa **quatro estratégias de o
 | `sort/selection_sort.c` | Estratégia **Simple** (O(n²)). |
 | `sort/chunk_sort.c`, `chunk_utils.c` | Estratégia **Medium** (O(n√n)), por divisão em blocos (*chunks*). |
 | `sort/radix_sort.c` | Estratégia **Complex** (O(n log n)), radix sort bit a bit sobre os índices. |
-| `sort/adaptative_sort.c` | Estratégia **Adaptive**: escolhe internamente Simple, Medium ou Complex conforme a desordem medida. |
+| `sort/adaptive_sort.c` | Estratégia **Adaptive**: escolhe internamente Simple, Medium ou Complex conforme a desordem medida. |
 | `libft/` | Biblioteca própria (`ft_atol`, `ft_split`, `ft_itoa`, `ft_strjoin`, etc.), usada para parsing e formatação de strings sem `printf`/`atoi` da libc. |
 
 ---
@@ -108,11 +108,11 @@ pa
 cat bench.txt
 ```
 ```
-[bench] disorder: 49.93%
+[bench] disorder: 47.85%
 [bench] strategy: Adaptive / O(n√n)
-[bench] total_ops: 7997
+[bench] total_ops: 8674
 [bench] sa: 0 sb: 0 ss: 0 pa: 500 pb: 500
-[bench] ra: 4840 rb: 1098 rr: 0 rra: 0 rrb: 1059 rrr: 0
+[bench] ra: 5000 rb: 1294 rr: 0 rra: 0 rrb: 1380 rrr: 0
 ```
 
 
@@ -133,7 +133,7 @@ A partir da desordem, o modo `--adaptive` (padrão) escolhe uma das três estrat
 3. **Complex — O(n log n) (`sort/radix_sort.c`)**
    Usada quando `disorder ≥ 0.5`. É um *radix sort* LSD binário: para cada bit (de `0` até `get_max_bits(n)`, ou seja, `⌈log₂(n)⌉` bits), todo elemento cujo bit correspondente do **índice** é `0` vai para `stack_b` (`pb`), o restante roda em `stack_a` (`ra`); ao final da passada, tudo volta para `stack_a` (`pa`). Como cada uma das `⌈log₂ n⌉` passadas custa O(n) operações, o total é O(n log n) — a melhor classe de complexidade suportada, ideal para entradas muito embaralhadas.
 
-4. **Adaptive (`sort/adaptative_sort.c`)**
+4. **Adaptive (`sort/adaptive_sort.c`)**
    Não é um algoritmo novo, e sim um despachante: mede a desordem uma única vez e delega para Simple, Medium ou Complex conforme os limiares acima, registrando em `context->strategy_used` qual delas foi de fato usada (visível no `--bench`).
 
 **Casos de base comuns a todas as estratégias** (`sort/sort_dispatch.c`, `srcs/sort_base.c`): pilhas de `0` ou `1` elemento já estão ordenadas; `2` elementos usam uma comparação e, no máximo, um `sa`; `3` elementos usam uma tabela de 6 casos fixos (`sort_three`); `4` e `5` elementos usam `sort_five`, que empurra para `stack_b` o(s) menor(es) elemento(s) da pilha, ordena os 3 restantes com `sort_three` e traz tudo de volta com `pa`. Isso evita o custo de um algoritmo genérico para entradas pequenas, onde ele seria proporcionalmente caro.
@@ -175,7 +175,7 @@ A IA **não** foi utilizada como substituto do subject do projeto nem para gerar
 
 | Login | Áreas principais |
 | :--- | :--- |
-| **araissa-** | `libft` completa, parsing (`is_number`, `has_duplicate`), estruturas de pilha (`stack_utils.c`), `analysis.c` (desordem/indexação), módulo `--bench` (`bench_utils.c`, `bench_print.c`, `bench_strategy.c`), operações `ft_rotate`/`ft_push`. |
-| **malima-m** | `push_swap.h`, `main.c`/`main_utils.c`, `sort_base.c`, `sort_dispatch.c`, estratégias Medium/Complex/Adaptive (`chunk_sort.c`, `radix_sort.c`, `adaptative_sort.c`), operações `ft_swap`/`ft_rerotate`. |
+| **araissa-** | `libft` completa, parsing (`is_number`, `has_duplicate`),  operações `ft_rotate`/ módulo `--bench` (`bench_utils.c`, `bench_print.c`, `bench_strategy.c`), `Makefile`. |
+| **malima-m** | `sort_base.c`, `sort_dispatch.c`, estratégias Medium/Complex (`chunk_sort.c`, `radix_sort.c`), `parsing.c`, `, operações `ft_rerotate`/`ft_swap` / `ft_push`. |
+| **Ambos** | `push_swap.h`, `main_utils.c`, `main.c`, `analysis.c` (desordem/indexação), `stack_utils.c`, `adaptive_sort.c`  / arquivos criados por um e revisados/editados pelo outro. |
 
-Ambos os integrantes compreendem a totalidade do código e são capazes de explicar qualquer parte dele durante a defesa, conforme exigido pelo subject.
