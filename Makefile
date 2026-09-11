@@ -6,13 +6,13 @@
 #    By: araissa- <araissa-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/20 16:56:38 by araissa-          #+#    #+#              #
-#    Updated: 2026/07/20 16:56:38 by araissa-         ###   ########.fr        #
+#    Updated: 2026/09/11 17:06:41 by araissa-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -Iincludes -Ilibft
 LIBFT_DIR	= libft
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -48,8 +48,10 @@ all: $(NAME)
 $(NAME):  $(LIBFT) $(OBJ)
 		$(CC) $(CFLAGS) $(OBJ) -L$(LIBFT_DIR) -lft -o $(NAME)
 
-$(LIBFT):
+$(LIBFT): FORCE
 	$(MAKE) -C $(LIBFT_DIR)
+
+FORCE:
 
 clean:
 		rm -f $(OBJ)
@@ -61,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re FORCE
